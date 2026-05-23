@@ -11,7 +11,7 @@ module.exports = {
     category: 'general',
     description: 'Show bot GitHub repository and statistics',
     usage: '.github',
-    ownerOnly: false,
+    ownerOnly: true,
 
     async execute(sock, msg, args, extra) {
         try {
