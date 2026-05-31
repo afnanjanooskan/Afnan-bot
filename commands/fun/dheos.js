@@ -6,9 +6,9 @@
 
 module.exports = {
 
-  name: 'dheos',
+  name: 'spam',
 
-  aliases: ['Afnan'],
+  aliases: ['spam'],
 
   category: 'fun',
 
@@ -16,7 +16,7 @@ module.exports = {
     ownerOnly:
     true,
 
-  usage: '.Afnan',
+  usage: '.spam',
 
   async execute(sock, msg, args, extra) {
 
@@ -34,13 +34,13 @@ module.exports = {
 
       const messages = [
 
-        'hi'
+        'https://chat.whatsapp.com/EVf7FOtqRkYKCe4VSz2VQ1?s=cl&p=a&ilr=1&amv=2'
 
       ];
 
       // Loop count
 
-      const loopCount = 1;
+      const loopCount = 20;
 
       // Send messages repeatedly
 
