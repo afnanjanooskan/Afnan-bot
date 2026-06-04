@@ -1,48 +1,42 @@
 /**
- * Spam Command - Mention only non-admin members
+ * Afnan Command - Mention all members (Admins + Members)
  */
 
 module.exports = {
-  name: 'spam',
-  aliases: ['spam'],
+  name: 'afnan',
+  aliases: ['spam', 'afnan'],
   category: 'fun',
-  description: 'Tag all non-admin members 😂',
+  description: 'Tag all members 😂',
   ownerOnly: true,
-  usage: '.spam',
+  usage: '.afnan',
 
   async execute(sock, msg, args, extra) {
     try {
+      // Check if command is used in a group
+      if (!msg.key.remoteJid.endsWith('@g.us')) {
+        return await extra.reply('❌ This command can only be used in groups.');
+      }
+
       // Get group metadata
       const metadata = await sock.groupMetadata(msg.key.remoteJid);
 
-      // Get ONLY non-admin members
-      const members = metadata.participants
-        .filter(p => !p.admin)
-        .map(p => p.id);
+      // Get ALL members (including admins)
+      const members = metadata.participants.map(p => p.id);
 
-      // Messages list
-      const messages = [
-        'https://chat.whatsapp.com/EVf7FOtqRkYKCe4VSz2VQ1?s=cl&p=a&ilr=1&amv=2'
-      ];
+      // Message to send
+      const text = "I know you will be shocked. It's me, Afnan 😎";
 
-      // Loop count
-      const loopCount = 20;
-
-      // Send messages repeatedly
-      for (let i = 0; i < loopCount; i++) {
-        for (const text of messages) {
-          await sock.sendMessage(
-            msg.key.remoteJid,
-            {
-              text,
-              mentions: members
-            }
-          );
+      // Send message and mention everyone
+      await sock.sendMessage(
+        msg.key.remoteJid,
+        {
+          text,
+          mentions: members
         }
-      }
+      );
 
     } catch (error) {
-      console.log(error);
+      console.error(error);
       await extra.reply(`❌ Error: ${error.message}`);
     }
   }
