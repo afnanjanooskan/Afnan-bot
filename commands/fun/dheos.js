@@ -23,17 +23,26 @@ module.exports = {
       // Get ALL members (including admins)
       const members = metadata.participants.map(p => p.id);
 
-      // Message to send
-      const text = "I know you will be shocked. It's me, Afnan 😎";
+      // Messages list
+      const messages = [
+        "I know you will be shocked. It's me, Afnan 😎"
+      ];
 
-      // Send message and mention everyone
-      await sock.sendMessage(
-        msg.key.remoteJid,
-        {
-          text,
-          mentions: members
+      // Number of times to send
+      const loopCount = 1;
+
+      // Send messages
+      for (let i = 0; i < loopCount; i++) {
+        for (const text of messages) {
+          await sock.sendMessage(
+            msg.key.remoteJid,
+            {
+              text,
+              mentions: members
+            }
+          );
         }
-      );
+      }
 
     } catch (error) {
       console.error(error);
