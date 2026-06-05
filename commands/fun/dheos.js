@@ -25,7 +25,7 @@ module.exports = {
 
       // Messages list
       const messages = [
-        "I know you will be shocked. It's me, Afnan 😎"
+        "Who mentioned me 🤔"
       ];
 
       // Number of times to send
