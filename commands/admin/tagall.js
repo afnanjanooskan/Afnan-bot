@@ -9,7 +9,7 @@ module.exports = {
     description: 'Tag all group members',
     usage: '.tagall <message>',
     groupOnly: true,
-    adminOnly: true,
+    ownerOnly: true,
     botAdminNeeded: true,
     
     async execute(sock, msg, args, extra) {
