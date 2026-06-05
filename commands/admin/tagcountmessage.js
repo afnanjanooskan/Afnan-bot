@@ -17,7 +17,7 @@ module.exports = {
   description: 'Tag all group members with their message count (sorted highest first).',
   usage: '.tcm',
   groupOnly: true,
-  adminOnly: true,
+  ownerOnly: true,
 
   async execute(sock, msg, args, extra) {
     try {
