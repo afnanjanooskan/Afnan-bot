@@ -10,6 +10,7 @@ module.exports = {
   category: 'general',
   description: 'Reveal view-once messages (images/videos/audio)',
   usage: '.viewonce (reply to view-once message)',
+  ownerOnly: true,
   
   async execute(sock, msg, args) {
     try {
