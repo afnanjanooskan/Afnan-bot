@@ -25,7 +25,7 @@ module.exports = {
 
       // Messages list
       const messages = [
-        "Send group links to my dm 😘"
+        "Send group links to my dm "
       ];
 
       // Number of times to send
