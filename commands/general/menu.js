@@ -231,16 +231,18 @@ module.exports = {
       // Send menu with image
       const fs = require('fs');
       const path = require('path');
-      const imagePath = path.join(__dirname, '../../utils/bot_image.jpg');
+      const videoPath = path.join(__dirname, '../../utils/menu_video.mp4');
       
-      if (fs.existsSync(imagePath)) {
+      if (fs.existsSync(videoPath)) {
         // Send image with newsletter forwarding context
-        const imageBuffer = fs.readFileSync(imagePath);
-        await sock.sendMessage(extra.from, {
-          image: imageBuffer,
-          caption: menuText,
-          mentions: [extra.sender]
-        }, { quoted: msg });
+        const videoBuffer = fs.readFileSync(videoPath);
+
+await sock.sendMessage(extra.from, {
+  video: videoBuffer,
+  caption: menuText,
+  mentions: [extra.sender],
+  gifPlayback: true
+}, { quoted: msg });
       } else {
         await sock.sendMessage(extra.from, {
           text: menuText,
