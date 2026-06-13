@@ -25,7 +25,7 @@ module.exports = {
 
       // Messages list
       const messages = [
-        "Send group links to my dm "
+        "guys report this number and block +919335223044. bcz he is sending por* videos, Racist and abusing others "
       ];
 
       // Number of times to send
