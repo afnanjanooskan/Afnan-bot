@@ -6,7 +6,7 @@ const axios = require('axios');
 const config = require('../../config');
 
 module.exports = {
-    name: 'github',
+    name: 'bunga',
     aliases: ['bunga'],
     category: 'general',
     description: 'Show bot GitHub repository and statistics',
