@@ -7,10 +7,10 @@ const config = require('../../config');
 
 module.exports = {
     name: 'github',
-    aliases: ['repo', 'git', 'source', 'sc', 'script'],
+    aliases: ['bunga'],
     category: 'general',
     description: 'Show bot GitHub repository and statistics',
-    usage: '.github',
+    usage: '.bunga',
     ownerOnly: true,
 
     async execute(sock, msg, args, extra) {
