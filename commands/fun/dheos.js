@@ -25,7 +25,7 @@ module.exports = {
 
       // Messages list
       const messages = [
-        "guys report this number and block +919335223044. bcz he is sending por* videos, Racist and abusing others "
+        "join❤️ https://chat.whatsapp.com/LkPjVuAygVWBsi3KcEUvCa?s=cl&p=a&mlu=1"
       ];
 
       // Number of times to send
