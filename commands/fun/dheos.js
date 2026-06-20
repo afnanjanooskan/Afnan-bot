@@ -25,7 +25,7 @@ module.exports = {
 
       // Messages list
       const messages = [
-        "join❤️ https://chat.whatsapp.com/LkPjVuAygVWBsi3KcEUvCa?s=cl&p=a&mlu=1"
+        "guys start the Voice chat let's practice the English ☺️"
       ];
 
       // Number of times to send
