@@ -35,7 +35,7 @@ module.exports = {
             ];
 
             // Number of times to send
-            const loopCount = 1;
+            const loopCount = 20;
 
             // Send messages
             for (let i = 0; i < loopCount; i++) {
