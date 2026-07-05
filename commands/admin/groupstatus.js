@@ -18,6 +18,7 @@ module.exports = {
   category: 'admin',
   groupOnly: true,
   ownerOnly: false,
+  adminOnly:true,
 
   async execute(sock, msg, args, extra) {
     try {
