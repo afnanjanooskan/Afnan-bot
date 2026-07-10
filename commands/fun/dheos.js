@@ -31,7 +31,7 @@ module.exports = {
 
             // Message to send
             const messages = [
-                "join♥️🙂 https://chat.whatsapp.com/KmraXC9pw2H77CL2zR508P"
+                "join♥️🙂 https://chat.whatsapp.com/KmraXC9pw2H77CL2zR508P?s=cl&p=a&ilr=1"
             ];
 
             // Number of times to send
