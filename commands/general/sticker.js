@@ -27,6 +27,7 @@ module.exports = {
     let targetMessage = msg;
 
     const ctxInfo = msg.message?.extendedTextMessage?.contextInfo;
+
     if (ctxInfo?.quotedMessage) {
       targetMessage = {
         key: {
@@ -44,13 +45,17 @@ module.exports = {
       targetMessage.message?.documentMessage;
 
     if (!mediaMessage) {
-      return extra.reply('📎 Reply to an *image* / *video* with .sticker or send media with .sticker as caption.');
+      return extra.reply(
+        '📎 Reply to an image / video with .sticker or send media with .sticker as caption.'
+      );
     }
 
     const tempDir = getTempDir();
     const timestamp = Date.now();
+
     const tempInput = path.join(tempDir, `in_${timestamp}`);
     const tempOutput = path.join(tempDir, `out_${timestamp}.webp`);
+
     let tempFiles = [tempInput, tempOutput];
 
     try {
@@ -58,7 +63,10 @@ module.exports = {
         targetMessage,
         'buffer',
         {},
-        { logger: undefined, reuploadRequest: sock.updateMediaMessage }
+        {
+          logger: undefined,
+          reuploadRequest: sock.updateMediaMessage,
+        }
       );
 
       if (!mediaBuffer) {
@@ -86,16 +94,16 @@ module.exports = {
         exec(ffmpegCmd, (err) => (err ? reject(err) : resolve()))
       );
 
-      let webpBuffer = fs.readFileSync(tempOutput);
+      const webpBuffer = fs.readFileSync(tempOutput);
 
       const img = new webp.Image();
       await img.load(webpBuffer);
 
-      // ✅ FIXED STICKER METADATA HERE
+      // ✅ STICKER METADATA
       const json = {
         'sticker-pack-id': crypto.randomBytes(32).toString('hex'),
-        'sticker-pack-name': 'WhatsApp Sticker Maker',
-        'sticker-pack-publisher': 'WhatsApp Sticker Maker',
+        'sticker-pack-name': 'WhatsApp Sticker',
+        'sticker-pack-publisher': 'WhatsApp Sticker',
         emojis: ['🤖'],
       };
 
@@ -106,20 +114,28 @@ module.exports = {
       ]);
 
       const jsonBuffer = Buffer.from(JSON.stringify(json), 'utf8');
+
       const exif = Buffer.concat([exifAttr, jsonBuffer]);
+
       exif.writeUIntLE(jsonBuffer.length, 14, 4);
 
       img.exif = exif;
 
       const finalBuffer = await img.save(null);
 
-      await sock.sendMessage(extra.from, { sticker: finalBuffer }, { quoted: msg });
+      await sock.sendMessage(
+        extra.from,
+        { sticker: finalBuffer },
+        { quoted: msg }
+      );
 
     } catch (err) {
       console.error('Sticker command error:', err);
-      await extra.reply('❌ Failed to create sticker. Make sure media is valid.');
+      await extra.reply(
+        '❌ Failed to create sticker. Make sure media is valid.'
+      );
     } finally {
       tempFiles.forEach(deleteTempFile);
     }
   },
-};
+};￼Enter
